@@ -1,0 +1,43 @@
+version: '3.1'
+services:
+    nginx:
+        image: nginx:1.13.12
+        ports:
+            - "80:80"
+        volumes:
+            - $PWD/nginx/conf:/etc/nginx
+            - $PWD/nginx/html:/var/www/html
+            - "phpsocket:/var/run"
+        networks:
+            - network
+
+    php:
+        build: $PWD/php/
+        volumes:
+            - $PWD/nginx/html:/var/www/html
+            - $PWD/php/conf:/usr/local/etc
+            - "phpsocket:/var/run"
+        networks:
+            - network
+
+    mysql:
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        volumes:
+            - $PWD/mysql/data:/var/lib/data
+            - $PWD/mysql/conf:/etc/mysql
+        environment:
+            MYSQL_USER: root
+            MYSQL_ROOT_PASSWORD: 123123
+            MYSQL_DATABASE: dockertest
+        networks:
+            - network
+
+networks:
+    network:
+        driver: bridge
+
+volumes:
+    phpsocket:
+

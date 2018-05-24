@@ -1,0 +1,2 @@
+[mysql]
+prompt          = \\u@mysql \\r:\\m:\\s->   #修改登陆默认提示符
