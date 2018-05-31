@@ -6,6 +6,12 @@ cd docker-web
 docker-compose up
 ```
 
+## docker install
+```sh
+curl -fsSL get.docker.com -o get-docker.sh
+sudo sh get-docker.sh --mirror Aliyun
+```
+
 ## docker-compose install
 [office link](https://docs.docker.com/compose/install/#install-compose)
 ```sh
@@ -19,3 +25,6 @@ docker-compose --version
 ```
 sudo rm /usr/local/bin/docker-compose
 ```
+
+> study
+[docker study](https://docker_practice.gitee.io/introduction/)
